@@ -2,16 +2,26 @@ package main
 
 import "fmt"
 
-func addtodo(){
+func addtodo(todolist *[10]string){
+	for i := 0; i < 10; i++ {
+		fmt.Println("enter todo: ")
+		fmt.Scan(&todolist[i])
+	}
 
 }
 
-func removetodo(){
+func removetodo(todolist *[10]string){
+	var n int
+	fmt.Println("enter todo number that u want to be removed")
+	fmt.Scan(&n)
+	todolist[n] = ""
 
 }
 
-func starttodolist(){
-
+func seetodo(todolist *[10]string){
+	for i := 0; i < 10; i++ {
+		fmt.Println(todolist[i])
+	}
 }
 
 func main(){
@@ -29,13 +39,13 @@ func main(){
 		fmt.Scan(&action)
 		//see todo
 		if action == "seetodo" {
-			fmt.Print(todolist)
+			seetodo(&todolist)
 		//add todo elemnt
 		}else if action == "addelement" {
-			addtodo()
+			addtodo(&todolist)
 		//remove todo elemnt
 		}else if action == "removeelement" {
-			removetodo()
+			removetodo(&todolist)
 			
 		}else {fmt.Println("invalid command")}
 
